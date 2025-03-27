@@ -1,0 +1,116 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+    width: 220px;
+    background: #2C3E50;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    cursor: pointer;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul li a i {
+    margin-right: 10px;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 20px;
+}
+
+/* Top Navbar */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ECF0F1;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.top-nav input {
+    padding: 8px;
+    width: 250px;
+}
+
+.top-nav .fa-bell {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.admin-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Dashboard Overview */
+.dashboard {
+    margin-top: 20px;
+}
+
+.dashboard h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Dashboard Cards */
+.dashboard-cards {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    background: #3498DB;
+    color: white;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.card i {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 22px;
+    margin: 0;
+}
+
+.card p {
+    margin: 5px 0 0;
+}

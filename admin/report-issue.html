@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Issue - UNCG EV’s</title>
+    <meta content="UNCG's EV Report Issue" property="og:title" />
+    <meta content="#00008B" data-react-helmet="true" name="theme-color" />
+
+    <!-- Google Fonts & Styles -->
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@700' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@500' rel='stylesheet'>
+    <link rel="stylesheet" href="styles/report.css">
+
+    <!-- Scripts -->
+    <script src="report-issue.js" defer></script>
+    <link rel="icon" href="">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-container">
+                <a href="index.html">
+                    <img id="logo" src="images/uncg_hrzntl-svg.png" alt="UNCG Logo">
+                </a>
+                <h2 class="site-title">UNCG EV’s</h2>
+            </div>
+            <hr class="gray">
+        </header>
+
+        <!-- Navbar -->
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="map.html">MAP</a></li>
+                <li><a href="booking.html">My Booking</a></li>
+                <li><a href="report-issue.html" class="active">REPORT ISSUE</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="hero-content">
+            <h2>Report a Charger Issue</h2>
+            <p class="description">
+                If you experience any issues with a charger, please report it below. Our team will review and resolve the issue as soon as possible.
+            </p>
+
+            <!-- Report Form -->
+            <form id="reportForm">
+                <label for="chargerId">Charger ID:</label>
+                <input type="number" id="chargerId" required>
+
+                <label for="issueDescription">Issue Description:</label>
+                <textarea id="issueDescription" required></textarea>
+
+                <button type="submit" class="report-btn">Submit Report</button>
+            </form>
+
+            <p id="reportMessage" class="hidden"></p>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; UNCG EV’s</p>
+    </footer>
+</body>
+
+</html>

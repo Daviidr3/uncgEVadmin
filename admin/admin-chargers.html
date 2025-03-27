@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Chargers Management</title>
+    <link rel="stylesheet" href="styles/chargers.css">
+    <script defer src="admin-chargers.js"></script>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <h2>UNCG EV Admin</h2>
+        <nav>
+            <ul>
+                <li><a href="admin-dashboard.html">Dashboard</a></li>
+                <li><a href="admin-chargers.html" class="active">Chargers</a></li>
+                <li><a href="admin-reservations.html">Reservations</a></li>
+                <li><a href="admin-maintenance.html">Maintenance</a></li>
+                <li><a href="admin-users.html">Users</a></li>
+                <li><a href="admin-notifications.html">Notifications</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+        <header>
+            <h1>Chargers Management</h1>
+            <button id="addChargerBtn">+ Add New Charger</button>
+        </header>
+
+        <!-- Charger List Table -->
+        <section class="chargers-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Last Serviced</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="chargersTable">
+                    <!-- Chargers will be loaded here dynamically -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Modal for Add/Edit Charger -->
+    <div id="chargerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Add Charger</h2>
+            <form id="chargerForm">
+                <input type="hidden" id="chargerId">  <!-- Hidden field for editing -->
+                
+                <label for="location">Location:</label>
+                <input type="text" id="location" required>
+
+                <label for="status">Status:</label>
+                <select id="status" required>
+                    <option value="available">Available</option>
+                    <option value="in_use">In Use</option>
+                    <option value="out_of_service">Out of Service</option>
+                </select>
+
+                <label for="lastServiced">Last Serviced Date:</label>
+                <input type="date" id="lastServiced" required>
+
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

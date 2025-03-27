@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - Maintenance Reports</title>
+  <link rel="stylesheet" href="styles/maintenance.css" />
+  <script defer src="admin-maintenance.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>UNCG EV Admin</h2>
+    <nav>
+      <ul>
+        <li><a href="admin-dashboard.html">Dashboard</a></li>
+        <li><a href="admin-chargers.html">Chargers</a></li>
+        <li><a href="admin-reservations.html">Reservations</a></li>
+        <li><a href="admin-maintenance.html" class="active">Maintenance</a></li>
+        <li><a href="admin-users.html">Users</a></li>
+        <li><a href="admin-notifications.html">Notifications</a></li>
+        <li><a href="logout.html">Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <header>
+      <h1>Maintenance Reports</h1>
+      <button id="reportIssueBtn" class="report-btn">+ Report Issue</button>
+    </header>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab(event, 'pending')">Pending Reports</button>
+      <button class="tab-btn" onclick="showTab(event, 'tickets')">Open Tickets</button>
+    </div>
+
+    <section id="pendingTab" class="tab-content">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Charger ID</th>
+            <th>Reported By</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="maintenanceTable"></tbody>
+      </table>
+    </section>
+
+    <section id="ticketsTab" class="tab-content" style="display:none;">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Charger ID</th>
+            <th>Assigned To</th>
+            <th>Description</th>
+            <th>Resolution Note</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="ticketsTable"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <div id="reportModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Maintenance Report</h2>
+      <p><strong>ID:</strong> <span id="reportId"></span></p>
+      <p><strong>Charger ID:</strong> <span id="chargerId"></span></p>
+      <p><strong>Reported By:</strong> <span id="reportedBy"></span></p>
+      <p><strong>Description:</strong> <span id="issueDescription"></span></p>
+      <p><strong>Status:</strong> <span id="reportStatus"></span></p>
+
+      <div id="adminActions" style="margin-top: 20px;">
+        <h3>Admin Actions</h3>
+        <label for="assignedTo">Assigned To:</label>
+        <input type="text" id="assignedTo" placeholder="Technician Name (optional)" />
+        <button id="ticketBtn" onclick="createTicket()">Create Ticket</button>
+        <button id="resolveBtn" onclick="resolveIssue()">Mark as Solved</button>
+        <button onclick="deleteReport()">Close Report</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
