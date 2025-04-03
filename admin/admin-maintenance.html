@@ -17,7 +17,6 @@
         <li><a href="admin-reservations.html">Reservations</a></li>
         <li><a href="admin-maintenance.html" class="active">Maintenance</a></li>
         <li><a href="admin-users.html">Users</a></li>
-        <li><a href="admin-notifications.html">Notifications</a></li>
         <li><a href="logout.html">Logout</a></li>
       </ul>
     </nav>
@@ -67,24 +66,23 @@
     </section>
   </main>
 
+  <!-- Report Issue Modal -->
   <div id="reportModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal()">&times;</span>
       <h2>Maintenance Report</h2>
-      <p><strong>ID:</strong> <span id="reportId"></span></p>
-      <p><strong>Charger ID:</strong> <span id="chargerId"></span></p>
-      <p><strong>Reported By:</strong> <span id="reportedBy"></span></p>
-      <p><strong>Description:</strong> <span id="issueDescription"></span></p>
-      <p><strong>Status:</strong> <span id="reportStatus"></span></p>
+      <form id="reportForm">
+        <label for="chargerIdInput">Charger ID:</label>
+        <input type="text" id="chargerIdInput" required>
 
-      <div id="adminActions" style="margin-top: 20px;">
-        <h3>Admin Actions</h3>
-        <label for="assignedTo">Assigned To:</label>
-        <input type="text" id="assignedTo" placeholder="Technician Name (optional)" />
-        <button id="ticketBtn" onclick="createTicket()">Create Ticket</button>
-        <button id="resolveBtn" onclick="resolveIssue()">Mark as Solved</button>
-        <button onclick="deleteReport()">Close Report</button>
-      </div>
+        <label for="reportedByInput">Reported By:</label>
+        <input type="text" id="reportedByInput" required>
+
+        <label for="issueDescriptionInput">Issue Description:</label>
+        <textarea id="issueDescriptionInput" required></textarea>
+
+        <button type="submit">Submit Report</button>
+      </form>
     </div>
   </div>
 </body>
