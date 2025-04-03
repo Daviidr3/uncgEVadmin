@@ -5,7 +5,6 @@ body {
     display: flex;
 }
 
-/* Sidebar */
 .sidebar {
     width: 220px;
     background-color: #2c3e50;
