@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - UNCG EVs</title>
     <link rel="stylesheet" href="styles/admin.css">
     <script defer src="admin-dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Add Chart.js CDN -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
     <!-- Sidebar Navigation -->
@@ -60,8 +63,15 @@
                     <p>Registered Users</p>
                 </div>
             </div>
+
+            <!-- Visualization for Maintenance Report Status -->
+            <div class="card">
+                <h3>Maintenance Report Status</h3>
+                <canvas id="maintenanceStatusChart"></canvas>
+            </div>
         </div>
     </div>
 
 </body>
+
 </html>

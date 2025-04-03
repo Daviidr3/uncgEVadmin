@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchActiveChargers();
     fetchReportedIssues();
     fetchOpenTicketsCount();
+    fetchMaintenanceStatus();  // New function for the chart
 });
 
 // Function to fetch active charger count
@@ -9,9 +10,10 @@ async function fetchActiveChargers() {
     try {
         const response = await fetch("/api/chargers/active-count");
         const data = await response.json();
-        document.getElementById("activeChargersCount").innerText = data.active_chargers;
+        document.getElementById("activeChargersCount").innerText = data.active_chargers || 0;
     } catch (error) {
         console.error("Error fetching active chargers:", error);
+        document.getElementById("activeChargersCount").innerText = 'Error';
     }
 }
 
@@ -20,9 +22,10 @@ async function fetchReportedIssues() {
     try {
         const response = await fetch("/api/maintenance/unresolved-count");
         const data = await response.json();
-        document.getElementById("reportedIssuesCount").innerText = data.issue_count;
+        document.getElementById("reportedIssuesCount").innerText = data.issue_count || 0;
     } catch (error) {
         console.error("Error fetching reported issues:", error);
+        document.getElementById("reportedIssuesCount").innerText = 'Error';
     }
 }
 
@@ -31,8 +34,52 @@ async function fetchOpenTicketsCount() {
     try {
         const response = await fetch("/api/maintenance/open-tickets-count");
         const data = await response.json();
-        document.getElementById("openTicketsCount").innerText = data.ticket_count;
+        document.getElementById("openTicketsCount").innerText = data.ticket_count || 0;
     } catch (error) {
         console.error("Error fetching open tickets:", error);
+        document.getElementById("openTicketsCount").innerText = 'Error';
+    }
+}
+
+// Function to fetch maintenance report status for the chart (e.g., pending, in-progress, resolved)
+async function fetchMaintenanceStatus() {
+    try {
+        const response = await fetch("/api/maintenance/status-counts");
+        const data = await response.json();
+        
+        // Prepare data for the chart
+        const chartData = {
+            labels: ['Pending', 'In Progress', 'Resolved'],
+            datasets: [{
+                label: 'Maintenance Report Status',
+                data: [data.pending, data.in_progress, data.resolved],
+                backgroundColor: ['#ffcc00', '#3498db', '#2ecc71'],
+                hoverOffset: 4
+            }]
+        };
+
+        // Create the chart
+        const ctx = document.getElementById('maintenanceStatusChart').getContext('2d');
+        const maintenanceStatusChart = new Chart(ctx, {
+            type: 'pie',
+            data: chartData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error("Error fetching maintenance report status:", error);
     }
 }

@@ -92,6 +92,7 @@ body {
     gap: 20px;
 }
 
+/* Individual Card Styling */
 .card {
     background: #3498DB;
     color: white;
@@ -113,4 +114,44 @@ body {
 
 .card p {
     margin: 5px 0 0;
+}
+
+/* Chart Container - Maintenance Report Status */
+.card {
+    padding: 20px;
+    background-color: #ffffff;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Canvas Styling (for Chart.js) */
+#maintenanceStatusChart {
+    width: 100% !important; /* Ensure chart takes full width of the card */
+    height: 300px !important; /* Fixed height for chart */
+    margin-top: 10px;
+}
+
+/* Center Content Inside the Card */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* For Pie Chart Labels */
+#maintenanceStatusChart + .card p {
+    font-size: 14px;
+    color: #777;
 }
