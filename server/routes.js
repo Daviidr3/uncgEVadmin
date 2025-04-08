@@ -175,4 +175,22 @@ router.get('/maintenance/unresolved-count', async (req, res) => {
     }
 });
 
+router.get('/maintenance/status-counts', async (req, res) => {
+    try {
+        // Query to count the status of reports
+        const result = await client.query(`
+            SELECT 
+                SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) AS pending,
+                SUM(CASE WHEN status = 'in_progress' THEN 1 ELSE 0 END) AS in_progress,
+                SUM(CASE WHEN status = 'resolved' THEN 1 ELSE 0 END) AS resolved
+            FROM maintenance_reports
+        `);
+
+        // Send the counts for each status
+        res.json(result.rows[0]);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 module.exports = router;

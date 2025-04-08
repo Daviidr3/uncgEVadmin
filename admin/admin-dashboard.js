@@ -46,13 +46,17 @@ async function fetchMaintenanceStatus() {
     try {
         const response = await fetch("/api/maintenance/status-counts");
         const data = await response.json();
-        
-        // Prepare data for the chart
+
+        // Prepare data for the chart with fallback in case data is missing
         const chartData = {
             labels: ['Pending', 'In Progress', 'Resolved'],
             datasets: [{
                 label: 'Maintenance Report Status',
-                data: [data.pending, data.in_progress, data.resolved],
+                data: [
+                    data.pending || 0,  // Default to 0 if the data is missing
+                    data.in_progress || 0,
+                    data.resolved || 0
+                ],
                 backgroundColor: ['#ffcc00', '#3498db', '#2ecc71'],
                 hoverOffset: 4
             }]
@@ -72,7 +76,7 @@ async function fetchMaintenanceStatus() {
                     tooltip: {
                         callbacks: {
                             label: function (tooltipItem) {
-                                return tooltipItem.label + ': ' + tooltipItem.raw;
+                                return tooltipItem.label + ': ' + tooltipItem.raw + ' reports';
                             }
                         }
                     }
