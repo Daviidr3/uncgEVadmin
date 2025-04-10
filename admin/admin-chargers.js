@@ -25,13 +25,13 @@ async function fetchChargers() {
 
         chargersTable.innerHTML = chargers.map(charger => `
             <tr>
-                <td>${charger.charger_id}</td>
+                <td>${charger.chargerid}</td>
                 <td>${charger.location}</td>
                 <td>${charger.status}</td>
                 <td>${charger.last_serviced_date}</td>
                 <td>
-                    <button class="edit-btn" onclick="editCharger(${charger.charger_id}, '${charger.location}', '${charger.status}', '${charger.last_serviced_date}')">Edit</button>
-                    <button class="delete-btn" onclick="deleteCharger(${charger.charger_id})">Delete</button>
+                    <button class="edit-btn" onclick="editCharger(${charger.chargerid}, '${charger.location}', '${charger.status}', '${charger.last_serviced_date}')">Edit</button>
+                    <button class="delete-btn" onclick="deleteCharger(${charger.chargerid})">Delete</button>
                 </td>
             </tr>
         `).join("");

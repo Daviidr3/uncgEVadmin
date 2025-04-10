@@ -45,12 +45,12 @@ async function fetchMaintenanceReports() {
         maintenanceTable.innerHTML = reports.map(report => `
             <tr>
                 <td>${report.report_id}</td>
-                <td>${report.charger_id}</td>
+                <td>${report.chargerid}</td>
                 <td>${report.reported_by}</td>
                 <td>${report.issue_description}</td>
                 <td>${report.status}</td>
                 <td>
-                    <button class="view-btn" onclick="openReport(${report.report_id}, ${report.charger_id}, '${report.reported_by}', '${report.issue_description}', '${report.status}')">View</button>
+                    <button class="view-btn" onclick="openReport(${report.report_id}, ${report.chargerid}, '${report.reported_by}', '${report.issue_description}', '${report.status}')">View</button>
                 </td>
             </tr>
         `).join("");
@@ -71,7 +71,7 @@ async function fetchOpenTickets() {
         ticketsTable.innerHTML = openTickets.map(report => `
             <tr>
                 <td>${report.report_id}</td>
-                <td>${report.charger_id}</td>
+                <td>${report.chargerid}</td>
                 <td>${report.assigned_to || "Unassigned"}</td>
                 <td>${report.issue_description}</td>
                 <td><textarea id="resolution_${report.report_id}" placeholder="Add resolution note"></textarea></td>

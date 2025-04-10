@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const response = await fetch("/api/maintenance", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ charger_id: chargerId, reported_by: reportedBy, issue_description: issueDescription })
+            body: JSON.stringify({ chargerid: chargerId, reported_by: reportedBy, issue_description: issueDescription })
         });
 
         if (response.ok) {
@@ -43,7 +43,7 @@ async function fetchUserReports() {
         reportList.innerHTML = reports.map(report => `
             <tr>
                 <td>${report.report_id}</td>
-                <td>${report.charger_id}</td>
+                <td>${report.chargerid}</td>
                 <td>${report.issue_description}</td>
                 <td>${report.status}</td>
             </tr>

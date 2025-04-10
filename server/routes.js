@@ -42,7 +42,7 @@ router.put('/chargers/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const result = await client.query(
-            "UPDATE chargers SET location = $1, status = $2, last_serviced_date = $3 WHERE charger_id = $4 RETURNING *",
+            "UPDATE chargers SET location = $1, status = $2, last_serviced_date = $3 WHERE chargerid = $4 RETURNING *",
             [location, status, last_serviced_date, id]
         );
         if (result.rows.length === 0) {
@@ -58,7 +58,7 @@ router.put('/chargers/:id', async (req, res) => {
 router.delete('/chargers/:id', async (req, res) => {
     const { id } = req.params;
     try {
-        const result = await client.query("DELETE FROM chargers WHERE charger_id = $1 RETURNING *", [id]);
+        const result = await client.query("DELETE FROM chargers WHERE chargerid = $1 RETURNING *", [id]);
         if (result.rows.length === 0) {
             return res.status(404).json({ message: "Charger not found" });
         }
@@ -94,11 +94,11 @@ router.get('/maintenance/unresolved', async (req, res) => {
 
 // Add a new maintenance report (CREATE)
 router.post('/maintenance', async (req, res) => {
-    const { charger_id, reported_by, issue_description } = req.body;
+    const { chargerid, reported_by, issue_description } = req.body;
     try {
         const result = await client.query(
-            "INSERT INTO maintenance_reports (charger_id, reported_by, issue_description) VALUES ($1, $2, $3) RETURNING *",
-            [charger_id, reported_by, issue_description]
+            "INSERT INTO maintenance_reports (chargerid, reported_by, issue_description) VALUES ($1, $2, $3) RETURNING *",
+            [chargerid, reported_by, issue_description]
         );
         res.json(result.rows[0]);
     } catch (err) {
